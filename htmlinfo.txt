@@ -1,3 +1,5 @@
+MAIN TUTORIAL FOLLOWED: https://www.youtube.com/watch?v=qz0aGYrrlhU&t=1777s (MOSH HTML COURSE)
+
 HTTP STATUS CODES:
 
 200: ALL GOOD/OKAY
@@ -9,3 +11,9 @@ https://validator.w3.org/
 
 CSS VALIDATOR:
 https://jigsaw.w3.org/css-validator
+
+FREE IMAGE RESOURCE:
+https://unsplash.com/
+
+provide good description for images (SEO TIP)
+add alt text too, because if image can't be loaded, alt text is shown
