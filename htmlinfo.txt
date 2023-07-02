@@ -17,3 +17,5 @@ https://unsplash.com/
 
 provide good description for images (SEO TIP)
 add alt text too, because if image can't be loaded, alt text is shown
+
+you can add a "comment" or so to speak, in html, by using the <!> tag anything inside <! efiubfikbr> like this, will be ignored by the browser.
