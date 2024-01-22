@@ -1,10 +1,17 @@
 MAIN TUTORIAL FOLLOWED: https://www.youtube.com/watch?v=qz0aGYrrlhU&t=1777s (MOSH HTML COURSE)
 
+(client) browser connects to where the website is hosted (server) - hhtp request
+website is displayed - http response
+
+after receiving the response, the browsers constructs the DOM: DOCUMENT OBJECT MODEL
+DOM is basically a respresentation of the objects in our html document (basically all the building blocks of your page, like paragraphs, images, etc)
+so after constructing the DOM, it knows what it needs to load (render) the page
+the browser then sends http requests (in parallel to make things faster) to retrieve information accordingly (html, css, js) and then finally,
+renders it.
+
 HTTP STATUS CODES:
 
 200: ALL GOOD/OKAY
-
-DOM: DOCUMENT OBJECT MODEL
 
 HTML VALIDATOR:
 https://validator.w3.org/
