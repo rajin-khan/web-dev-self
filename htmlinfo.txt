@@ -26,3 +26,17 @@ provide good description for images (SEO TIP)
 add alt text too, because if image can't be loaded, alt text is shown
 
 you can add a "comment" or so to speak, in html, by using the <!> tag anything inside <! efiubfikbr> like this, will be ignored by the browser.
+
+html files start or have the main page at index.html
+images that are put in src inside the img tag have their location specified with respect to the html file. for example in T1's index.html,
+it was in images/food.png
+
+doctype declarations are usually all caps, but everything else is small, conventionally.
+
+if you set the border radius of an image to exactly half its size, so if the img is 100px, and the border rad is 50px,
+you get a perfect circle.
+
+each attribute can be assigned to a different class for styling rules.
+for example, if a paragraph element is assigned a class called username, like this: <p class="username">
+then in the style part, we can create a section for p.username, or just .username, so that all elements assigned to username class are affected.
+
