@@ -1,0 +1,89 @@
+MAIN TUTORIAL FOLLOWED: https://www.youtube.com/watch?v=qz0aGYrrlhU&t=1777s (MOSH HTML COURSE)
+
+(client) browser connects to where the website is hosted (server) - hhtp request
+website is displayed - http response
+
+after receiving the response, the browsers constructs the DOM: DOCUMENT OBJECT MODEL
+DOM is basically a respresentation of the objects in our html document (basically all the building blocks of your page, like paragraphs, images, etc)
+so after constructing the DOM, it knows what it needs to load (render) the page
+the browser then sends http requests (in parallel to make things faster) to retrieve information accordingly (html, css, js) and then finally,
+renders it.
+
+HTTP STATUS CODES:
+
+200: ALL GOOD/OKAY
+
+HTML VALIDATOR:
+https://validator.w3.org/
+
+CSS VALIDATOR:
+https://jigsaw.w3.org/css-validator
+
+FREE IMAGE RESOURCE:
+https://unsplash.com/
+
+IF YOU OPEN A BLANK HTML FILE, TYPE "!", AND HIT TAB, YOU GET BASIC HTML BOILERPLATE
+
+provide good description for images (SEO TIP)
+add alt text too, because if image can't be loaded, alt text is shown
+
+you can add a "comment" or so to speak, in html, by using the <!> tag anything inside <! efiubfikbr> like this, will be ignored by the browser.
+
+html files start or have the main page at index.html
+
+image tags usually include an src (source), and an alt (alternative text).
+images that are put in src inside the img tag have their location specified with respect to the html file. for example in T1's index.html,
+it was in images/food.png
+
+doctype declarations are usually all caps, but everything else is small, conventionally.
+
+if you set the border radius of an image to exactly half its size, so if the img is 100px, and the border rad is 50px,
+you get a perfect circle.
+
+each attribute can be assigned to a different class for styling rules.
+for example, if a paragraph element is assigned a class called username, like this: <p class="username">
+then in the style part, we can create a section for p.username, or just .username, so that all elements assigned to username class are affected.
+
+The emphasis <em></em> tag, strong <strong> tag, should not be used to change style properties, it simply emphasises so browsers know which keywords 
+are most important. we can change how these items look in the style sheet.
+
+Tags like <b> and <i> are considered deprecated.
+
+in HTML body, we have 6 heading elements.
+h1, h2, h3, and so on and so forth until h6.
+they create hierarchy, NOT a difference in size. It is a matter of importance and how the browser views these elements in terms of importance
+
+angled brackets, <> and other reserved keywords in html cannot be written without using HTML entities. (&;)
+For example, if we wanted to write <HTML> in the body, we would have to replace it with:
+&lt;HTML&gt; where &lt; stands for greater than (the left angle bracket) and &gt; stands for greater than (the right angle bracket.)
+
+another common html entity is the copyright symbol, &copy;
+you can find a full list here:
+https://dev.w3.org/html5/spec-LC/named-character-references.html
+
+to generate dummy text, inside a p tag, we type lorem followed by the number of words (no space), like this: lorem100
+another html entity is a non breaking space, denoted by &nbsp;
+basically say you have two words, a and b, and you always want them to be on the same line. then you would want to put: a&nbsp;b so that regardless of
+zoom or cutoff they remain on the same line.
+
+editor wrap in vscode is enabled/disabled by: ⌥z 
+
+we can use hyperlinks using anchor elements: <a> tag
+they look like this:
+<a href=""></a>
+the href part is the hyperlink.
+when using hyperlinks, we can use a relative, or an absolute URL. relative obv relative to the current html file.
+absolute URLS begin with /, where "/" indicates the root of the folder.
+in hyperlinks, we can use text, or images.
+
+to make an element downloadable, we can add a download attribute to our anchor element (literally the word download after the href part).
+
+we can link to other parts of the page too (may be useful when creating buttons to bring up separate pages of books for your library project)
+shown in t5. (using # and an identifier. just # means top of the page.)
+
+we can link to other websites too, just use https:// before the links in the href.
+to make links open in a new tab, just add a "target" attribute after href, and set it to: target="_blank"
+
+for images, you want to serve smaller sizes/resolutions on mobile devices, and obviously larger ones on desktop (to be discussed later).
+we want to give good alt texts/descriptions to our images so search engines can better understand and optimize our pages, as mentioned earlier.
+for most image fitting scenarios, we use object-fit: cover;
