@@ -22,6 +22,12 @@ https://jigsaw.w3.org/css-validator
 FREE IMAGE RESOURCE:
 https://unsplash.com/
 
+FREE VIDEO RESOURCE:
+https://pexels.com
+
+USEFUL RESOURCE TO KNOW WHICH BROWSERS SUPPORT WHICH HTML/CSS FEATURE:
+https://caniuse.com
+
 IF YOU OPEN A BLANK HTML FILE, TYPE "!", AND HIT TAB, YOU GET BASIC HTML BOILERPLATE
 
 provide good description for images (SEO TIP)
@@ -87,3 +93,52 @@ to make links open in a new tab, just add a "target" attribute after href, and s
 for images, you want to serve smaller sizes/resolutions on mobile devices, and obviously larger ones on desktop (to be discussed later).
 we want to give good alt texts/descriptions to our images so search engines can better understand and optimize our pages, as mentioned earlier.
 for most image fitting scenarios, we use object-fit: cover;
+
+for embedding videos, just use the videos tag, src with the relative URL, and then add a controls attribute before src.
+controls is a boolean attribute. it being present means video controls are shown, while it not being present means controls are not shown.
+in html, all boolean attributes work like this. you cannot separately set them to true or false.
+you can also add the autoplay attribute to make it, obv, autoplay (also boolean).
+another boolean attribute for video is loop.
+
+when embedding videos in the video tag, also include a fallback message inside the tag in case video is not supported (best practice). (IN T7).
+
+for embedding audio, you use the audio tag (exactly like videos). Furthermore, you can use all the boolean attributes mentioned for videos in audio.
+
+lists:
+
+unordered lists, <ul> tag, are commonly used when creating navigation menus, display images, shopping lists, etc.
+inside these unordered lists, you can put in list elements using the <li> tag. (you can use li*3/4/5 etc to generate the number of list items quickly)
+you can create hierarchy in the list items too
+as shown in T8.
+
+int contrast, we have ordered lists, <ol> tag, where the order in which the order of items matter. (T9)
+you can create things even quicker with the shorthand: ol>li*3
+which means an ordered list, with 3 list items in it. you can do the same for ul, obv.
+
+then, we have description lists,  for implementing glossaries/showing metadata.
+for this, we use the <dl> tag.
+inside the list, we can have a description term, using <dt>.
+after which, we can have a description detail element, using <dd>. (T10)
+
+i have found out that for these things, a common shorthand is: dl>dt>dd*3 (like this, you have a dl element, with a dt element in it, and 3 dd elements in the dt part).
+
+then, we have the table elements (T11) (for displaying tabular data).
+we create tables using the <table> tag.
+inside tables, we can have 1 or more rows, using <tr> tag.
+inside rows, you can have 1 or more cells (data/header).
+to define a data cell, we use the <td> tag.
+to define a header cell, we use the <th> tag.
+
+now, we could just make tables like this, but it's better to put headers inside the <thead> tag, and the rest of the table in the <tbody> tag. (SEO tip).
+this is also called semantic html.
+
+containers are used to create sections of webpages like the nav panel, the welcome section, so on and so forth.
+
+in html, we have quite a few container elements. the one used most often is the div/division element, using the <div> tag.
+a div is a block level element. this means it will always start on a new line and take up the entire width of the page.
+
+we also have another generic container element, called the span element, which is often used for styling text.
+for example, if we wanted to wrap a text in a div, it might create problems as div is a block level element. this is where we use span.
+span is an inline element, not a block level one. so it doesn't take up the entire width of the page.
+
+There are more container elements which are a lot more descriptive.
