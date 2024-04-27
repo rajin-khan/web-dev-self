@@ -25,3 +25,40 @@ so, for example, you could take the <p> element, and add <p style= ""> to add em
 AVOID THIS AS MUCH AS POSSIBLE. better to use unique identifiers.
 
 so for <p>, add: <p id="first">, then use #first in the style part to just edit the first paragraph.
+
+T2
+
+NORMALIZING CSS:
+
+different browsers render some html elements differently. 
+to address this issue, we use a very popular stylesheet called Normalize.css
+it provides the basic style for some default html elements so they look the same across all browsers.
+link to dl: https://necolas.github.io/normalize.css/
+you want to include the normalize stylesheet for every website you make, and link to that normalize.css stylesheet (first) separately too,
+to ensure everything looks like the standard.
+normalization will take away the margin property of the body element, so you may have to reset it in styles.css
+
+usually, when using stylesheets, it's better to create a separate folder for css and then store the stylesheets there.
+
+T3
+
+SELECTORS IN CSS:
+
+we can select things in css by their:
+
+type (simply stating like head, body, etc).
+id (selected in css by a # sign) [we cannot have multiple elements with the same id]
+class (selected using a . sign) [we can have multiple elements with the same class]
+attribute (not that common, but selected by using a square bracket) [putting *= checks for the existence of an item, ^= checks if the matching attribute
+starts with that item, $=checks if the matching attribute ends with that item.]
+
+we can generate an element with a specific id by using the shortcut: element#nameofid
+for example: section#product would create: <section id="products"></section>
+we can generate an element with a specific class by using the shortcut: element.nameofclass*numberofobjectsinthatclass
+for example: article.products*3 gives:
+        <article class="product"></article>
+        <article class="product"></article>
+        <article class="product"></article>
+
+
+

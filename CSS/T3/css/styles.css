@@ -1,0 +1,16 @@
+body {
+    margin: 10px;
+}
+
+#products {
+    color: black;
+}
+
+.product {
+    color: aquamarine;
+}
+
+a[href*="google"] {
+
+    color: coral;
+}
