@@ -142,3 +142,46 @@ for example, if we wanted to wrap a text in a div, it might create problems as d
 span is an inline element, not a block level one. so it doesn't take up the entire width of the page.
 
 There are more container elements which are a lot more descriptive.
+
+divs and spans are generic containers.
+there are more, like semantic elements (T14).
+
+first example, article element, using the <article> tag. not just used for article, but rather any self contained independent element.
+examples include blogposts, reviews, user posts, product cards, etc.
+
+these article elements can contain anything, from lists, to tables, and more often than not, we can use the figure element, again, to make
+browsers understand our code better. it uses the <figure> tag, and inside it, we can place something, say, like an image, and then add a caption for that
+using the <figcaption> tag.
+
+in html5, similar to how we had to go through a lot of trouble and edit css properties to highlight the text using span/divs, we have a separate markup
+element for that reason only, called the mark element, used by the <mark> tag.
+
+T15
+
+STRUCTURING A WEBPAGE
+
+most webpages have three building blocks.
+
+<header>
+in header, you can have <nav> for the navigation bar
+inside the nav bar, you can have unordered lists
+<main> (content)
+the main part can have <section>(s)
+the sections can have <article>(s), and that itself can have <header>(s), <footer>(s), and <section>(s).
+after main, you can have <aside> (for ads and other unimp stuff)
+<footer>
+
+there is no exact way to structure a webpage. there are just common and best practices.
+
+so, we use the main element to represent the main content of the webpage.
+HOWEVER, EACH WEB PAGE CAN ONLY HAVE O N E MAIN ELEMENT. IF WE HAVE MORE THAN ONE, OUR WEBPAGE WILL GET A VALIDATION ERROR.
+
+we use the section element to group related content.
+
+we use the header element to represent introductory content (which can belong to a page, or a section, or an article).
+
+the footer element can be used in the same way.
+
+and finally, the aside element is used to represent content not directly related to the main content.
+
+official summary notes pdf from MOSH's course are in this folder.
