@@ -1,0 +1,27 @@
+T1 (PROVIDING CSS)
+
+There are three different ways to providing css in webpages.
+
+embedded stylesheets (when you put the style section directly in the html)
+problems: not scalable, violates separation of concerns.
+
+external stylesheets (separate css files)
+more preferred.
+
+inline styles (applied directly to a particular html element)
+
+you can call the external style sheets anything, the name doesn't matter. However, styles.css is pretty common.
+so, we don't have to create a separate style element in the html doc, just create a .css stylesheet, and then in the html doc head section,
+use the <link/> (self closing tag) and add the .css file in href. the rel attribute is just what you describe the file to be that is related.
+
+now, should we never use embedded styles?
+no, that's not the case. sometimes you may want to override your external stylesheet rules.
+so, even after linking, you can create a new <style> element and override the external stylesheet rules.
+
+now, we've seen how embedded style overrides external stylesheets, but even overriding that is the inline styles.
+
+every single html element has it's own style attribute.
+so, for example, you could take the <p> element, and add <p style= ""> to add embedded styles.
+AVOID THIS AS MUCH AS POSSIBLE. better to use unique identifiers.
+
+so for <p>, add: <p id="first">, then use #first in the style part to just edit the first paragraph.
