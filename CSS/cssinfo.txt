@@ -61,4 +61,59 @@ for example: article.products*3 gives:
         <article class="product"></article>
 
 
+T4
 
+RELATIONAL SELECTORS:
+
+inside a specific section that you have assigned an id to like this,
+
+<section id="products">
+        <p>Lorem ipsum dolor sit amet.</p>
+    </section>
+
+you can add a relational selector in the styles sheet by using this:
+
+#products p {
+
+    color: orange;
+}
+
+and this will apply it to all paragraphs in the products section.
+
+now what if you have paragraphs in a different part of the section? like this:
+
+<section id="products">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <article>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </article>
+    </section>
+
+then to apply the style to only the first paragraph, the "direct child" of the section, you have to use the > sign.
+
+#products > p {
+
+    color: orange;
+}
+
+if we have something like this:
+
+<section id="products">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <article>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </article>
+    </section>
+    <p>Lorem ipsum dolor sit amet.</p>
+
+this paragraph that comes immediately after the products section is called the sibling of the section.
+to apply the style to this paragraph only, we use the + sign:
+
+#products + p {
+
+    color: orange;
+}
+
+now if you want to select ANY and all paragraphs that come after the products section, just use the ~ sign.
+
+however, relational selectors can be fragile, and not as fast as basic selectors.
