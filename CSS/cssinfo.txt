@@ -117,3 +117,102 @@ to apply the style to this paragraph only, we use the + sign:
 now if you want to select ANY and all paragraphs that come after the products section, just use the ~ sign.
 
 however, relational selectors can be fragile, and not as fast as basic selectors.
+
+
+T5
+
+PSEUDO-CLASS SELECTORS:
+
+when we assign items a class, it can become tedious to separately define names for each class.
+sometimes, it is easier to use pseudo classes to refer to different items.
+for example, say we have:
+
+<body>
+    <article>
+        <h2>Heading</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </article>
+</body>
+
+in the stylesheet, we can use the ":" operator to access pseudo classes, like so:
+
+article :first-child {
+
+    //formatting;
+}
+
+first child will refer to h2, as in the first child element of the article. (a little fragile, as the first element may change according to us)
+
+article :first-of-type {
+
+    //formatting;
+}
+
+first of type refers to the first appearance of any kind of child element of different types the article part.
+
+if you want the rule applied to the first paragraph of the article, use this:
+
+article p:first-of-type {
+
+    //formatting;
+}
+
+similarly, last-child and last-of-type are other pseudo-class selectors.
+
+new shorthand: say we wanna create an unordered list with 5 list elements, each of them saying item 1, item 2, and so on
+we could write it like this: ul>li*5{Item $}
+and then we'd get:
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+</ul>
+
+another pseudo class selector is the nth-child selector, which acts like a function and lets you select, for example every even or odd child element
+in, say, an unordered list.
+
+ul li:nth-child(*) {
+
+    //formatting
+}
+
+IN THE * part, you can put in even, odd, or formulas like 3n for every 3rd element, and so on and so forth.
+
+there are specific selectors for hyperlinks as well (the anchor [<a>] tag). for example, to change the color of a visited link, you can:
+
+a:visited {
+
+    color: gray;
+}
+
+(no spaces in between a, the colon, or the "visited" part)
+
+and to change the color of all links, visited or unvisited, you can use:
+
+a:link {
+
+    color: cyan;
+}
+
+and to change the hover effect, you can use:
+
+a:hover {
+
+    color: pink
+}
+
+now, keep in mind, the hover pseudo class can be used ANYWHERE when the user hovers over ANYTHING. doesn't necessarily have to be just links.
+you can use the hover effect on a section, an article, a div, absolutely anwhere.
+do keep in mind that the hover effect must come at the LAST part, or it won't work.
+
+now, some users like to use their keyboard when navigating websites (by pressing tab). but the hover pseudo selector doesn't handle that.
+so, as best practice, whenever we use the hover selector, we should also use the focus selector, like this:
+
+a:hover, 
+a:focus {
+
+    color: pink
+}
