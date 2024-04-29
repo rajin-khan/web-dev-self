@@ -216,3 +216,80 @@ a:focus {
 
     color: pink
 }
+
+T6
+
+PSEUDO ELEMENT SELECTORS:
+
+sometimes we wanna style just the part of an element, not the entire element itself. this is where we use pseudo-element selectors.
+whereas pseudo selectors use the ":" operator, pseudo class selectors use the "::" operator.
+
+an example would be, say, in a paragraph element, we wanna style the first letter.
+we could achieve this by using a span, assigning it a class, and then referring to that class in the css, like this:
+
+<p>
+    <span class="first-letter">L</span>orem ipsum dolor sit amet consectetur adipisicing elit.
+</p>
+
+in the css:
+
+.first-letter {
+
+    //formatting;
+}
+
+however, this is kind of pointless here because we have a pseudo element selector for this very purpose. it works like this:
+
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+</p>
+
+in the css:
+
+p::first-letter {
+
+    //formatting;
+}
+
+here, the :: is being used to access the pseudo element selector first-letter.
+
+another pseudo element selector is for the first line of a paragraph, called first-line.
+again, that would work like this:
+
+p::first-line {
+
+    //formatting;
+}
+
+now, this might not seem very useful, but pseudo element selectors come in most handy when you're trying to change the color of, say, the selected portion
+of a part of your website. for example, if we wanted to change the color of the paragrap's highlighted text when selected, we'd do this:
+
+p::selection {
+
+    background-color: pink;
+}
+
+however, this rule would only apply to the paragraph. to make it work for any and all selections on the website, we'd just do this:
+
+::selection {
+
+    background-color: pink;
+}
+
+another pseudo element selector is the before, and after element. say, before/after every paragraph, we wanted to insert an ellipsis. we'd do it like this:
+
+p::before {
+
+    content: "...";
+    display: block; (converts the ellipsis to a block level element[takes up the entire space] rather than an inline element)
+}
+
+but keep in mind, if you use before, then that before becomes the element that first-line/first-letter will target.
+or,
+
+p::after {
+
+    content: "...";
+    display: block;
+}
+
