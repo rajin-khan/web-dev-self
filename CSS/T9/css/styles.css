@@ -1,0 +1,11 @@
+border {
+
+    margin: 10px;
+}
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background-color: #ffdd47;
+}
