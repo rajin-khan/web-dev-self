@@ -293,3 +293,181 @@ p::after {
     display: block;
 }
 
+T7
+
+SELECTOR SPECIFITY
+
+if you use multiple selectors to select the same target, the order of specifity will go like this (in order of decreasing priority):
+
+- ID SELECTOR (#)
+- CLASS & ATTRIBUTE SELECTORS (.)
+- ELEMENT SELECTOR (h1, p, article, etc.)
+
+if you have selectors with the same level of specificity, the one that comes last will be applied.
+
+to overcome specifity, say in a situation like this:
+
+index.html:
+<h1 id="products" class="highlight">Heading</h1>
+
+styles.css:
+h1 {
+
+    color: dodgerblue !important;
+}
+
+.highlight {
+
+    color: deeppink;
+}
+
+#products {
+
+    color: green
+}
+
+we want to use the !important keyword to ensure a specific property sticks, despite being overriden in specifity priority.
+while this may be an easy solution, we should avoid it as much as possible. it is considered a very bad practice.
+
+to explain the better solution, we have to know a few things.
+
+if you hover over a specific selector, you can see its priority in vscode. it looks like this:
+(0,0,0) [read as the decimal 000]
+
+the first position is to indicate the number of ID selectors, (1/0)
+the second position is to indicate the number of class/attribute selectors, (1/0)
+the third position is to indicate the number of element selectors, (1/0)
+
+now, for this example:
+
+h1 { //(0,0,1) priority [read as decimal 001]
+
+    color: dodgerblue;
+}
+
+.highlight { //(0,1,0) priority [read as decimal 010]
+
+    color: deeppink;
+}
+
+#products { //(1,0,0) priority [read as decimal 100]
+
+    color: green
+}
+
+if we want the color to be blue, what we can do is create a new selector with a higher priority.
+
+so,
+
+.highlight#products { //(1,1,0) priority [read as decimal 110]
+
+    color: dodgerblue
+}
+
+this has higher priority, so this rule will be applied.
+
+or, we could apply:
+
+h1#products { //(1,0,1) priority [read as decimal 101]
+
+    color: dodgerblue
+}
+
+this also has higher priority, so this rule will be applied.
+
+however, don't go overboard with specificity. gets hard to maintain.
+
+
+T8
+
+INHERITANCE
+
+generally speaking, most properties that make sense are inherited. like most typography rules.
+
+<p>Lorem ipsum <strong>dolor</strong> sit amet.</p>
+
+here, strong would inherit most of the properties of paragraph, like color, font, etc.
+
+however, say you want to ignore the color of the paragraph. then you would do this in the .css file:
+
+p {
+
+    color: dodgerblue;
+    border: 1px solid black;
+}
+
+strong {
+
+    color: initial;
+    border: inherit;
+}
+
+here, the color of the strong element is set to initial. then, the border property is not inherited by default, so we force it to inherit it.
+
+T9
+
+COLORS
+
+in css, we can define colors by:
+
+- NAME 
+- RGB values
+- HSL values (hue, saturation, lightness)
+- HEXADECIMAL values
+
+just google color picker and you'll find a very nice color picker from google.
+
+you can set colors using rgb values with the rgb() function, like this:
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 221, 71);
+}
+
+you can also use the rgba() function, which just takes one more extra decimal number between 0-1 to indicate opacity.
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 221, 71, 0.5);
+}
+
+you can set colors using hex values without any function, just the hex value itself, like this:
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background-color: #ffdd47;
+}
+
+however, opacity cannot be set using hex values, ONLY rgba can do that.
+
+you can set colors using hsl values with the hsl() function, like this: (remember to remove the degree character from the first value)
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background-color: hsl(39, 100%, 64%); //(first value is the position on the color wheel, the second value is the saturation, the third value is the brightness value.)
+}
+
+instead of separating values by comma in the hsl() function, you could've also written: hsl(39deg 100% 64%)
+
+similar to rgba, you can also use the hsla() function, which just takes one more extra decimal number between 0-1 to indicate opacity.
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background-color: hsl(39, 100%, 64%, 0.9);
+}
+
+
+T10
+
+GRADIENTS
+
