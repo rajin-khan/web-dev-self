@@ -471,3 +471,132 @@ T10
 
 GRADIENTS
 
+so, from the previous T9 example, let's use the .box:
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background: hsl(39, 100%, 64%, 0.9);
+}
+
+here, we cannot set a background-color property, because a gradient is an image. so need to either use background-image, or the shorthand, just "background".
+
+to use the gradient, we call the linear-gradient() function.
+it takes a lot of arguments.
+
+first off, it can take, simply, two colors (by name, rgb, hsl, hex, etc.) like this:
+
+- linear-gradient(dodgerblue, yellow); //makes it appear from top to bottom.
+
+we can also supply the direction of the gradient, with another argument before colors:
+
+- linear-gradient(to right, dodgerblue, yellow); //makes it appear from left to right. you can add "to" and then directions like left, right, top left, bottom right, you get the idea.
+
+we can also supply the direction of the gradient with degrees to be more precise, also with another argument before colors:
+
+- linear-gradient(45deg, dodgerblue, yellow); //north is considered 0deg
+
+we can also specify a % of space a color should begin from, like this:
+
+- linear-gradient(45deg, dodgerblue, yellow 30%); //meaning yellow should start at about 30% of the available space, meaning more yellow. 90% would mean less yellow.
+
+we can even supply a third color, like this: (or as many colors as you want, honestly)
+
+- linear-gradient(45deg, dodgerblue, yellow, tomato);
+
+
+in css, we also have radial gradient.
+
+the radial-gradient() function can take two colors:
+
+radial-gradient(white, yellow); //the first color is placed in the center.
+
+now, if we change the dimensions of the box, the radial gradient would look like an ellipse/sth different.
+we can make it look like a circle regardless of the dimension of the background by passing the argument "circle" before colors.
+
+radial-gradient(circle, white, yellow);
+
+we can also change the position of this circle, by using the "at" keyword, and give it the position, like:
+
+radial-gradient(circle at top left, white, yellow);
+
+again, you can supply as many colors as you want in the argument.
+
+however, there are tools available online to generate gradients and provide us with the css for it, like this:
+https://cssgradient.io/
+
+for example, this is a css line generated from that website:
+
+background: rgb(88,42,138);
+background: linear-gradient(274deg, rgba(88,42,138,1) 0%, rgba(236,111,24,1) 100%);
+
+why do we have a background property of just one color? well, most browsers support css, but in the case one doesn't, it falls back on that color.
+
+
+T11: BORDERS
+
+
+so, going back to our box, we can see that the border property takes three values:
+
+border: 10px solid royalblue; //the width(solid, dotted, dashed, etc [others styles exist]), the style, the color(can be rgb, hex, named, anything)
+
+however, this border property is a shorthand property. it applies them to all sides. in css, we have full control and can apply them to each side.
+for example, we can separately assign properties to:
+
+border-top: 10px, solid, royalblue;
+border-right: 10px, solid, royalblue;
+border-bottom: 10px, solid, royalblue;
+border-left: 10px, solid, royalblue;
+
+now, the order in which you write border rules matter. whichever comes last is kept in mind.
+
+also, border-width property assigns values in this order:
+
+border-width: 10px, 20px, 10px, 20px; //TOP, RIGHT, BOTTOM, LEFT (clockwise).
+
+however, if you remove the rule for the left border, the browser automatically applies the border rule of the left border.
+similarly, if you remove the rule for the bottom border, the browser auto-applies the rule for the top border.
+
+so, writing:
+border-width: 10px, 20px, 10px, 20px;
+is the same as writing:
+border-width: 10px, 20px;
+
+- comments are written in css in /* comment */
+
+we can separately apply properties like,
+
+border-style: //;
+border-color: //;
+
+most of the time, we use the shorthand, but this is all good to know.
+
+however, an important property that exists is border-radius. it helps to make our border round.
+
+border-radius: 10px; //round corners.
+border radius: 50px; //even more rounded corners.
+border radius: half-the-length/width; //circle (only for a square with length/width equal)
+
+we can create other shapes in css like triangle, stars, and so on. we can just look them up online. a useful link is:
+
+https://css-tricks.com/the-shapes-of-css/
+
+
+T12: SHADOWS
+
+again, using the same box element,
+for shadows, we can add shadows using the box-shadow property:
+
+box-shadow: 10px 10px 30px grey; //right-left-value (positive: right, negative, like -10px: left), down-up-value (positive: down, negative: up), blend value, color
+
+here, instead of using a solid color, most times, it's much better to just use an rgba and suppply the shadow color 
+and set the opacity to 0-1 (maybe 0.5) like this:
+
+box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) // (0, 0, 0) = rgb for pure black the decimal later is the opacity.
+
+furthermore, most times, when creating shadows, it's best to not move it left or right (aesthetic purposes), so we just supply 0px and 0px first.
+
+there also exists a text-shadow property. say you have a heading in the box, then in the h1 styling element, you'd write:
+
+text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); //exactly the same kind of values as the box-shadow function, like: horizontal, vertical, blend, color.
