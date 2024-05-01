@@ -1,0 +1,31 @@
+border {
+
+    margin: 10px;
+}
+
+.space {
+
+    height:100px;
+}
+
+.box {
+
+    width: 200px;
+    height: 200px;
+    background: coral;
+    box-shadow: 10px 10px 30px grey;
+}
+
+.box2 {
+
+    width: 200px;
+    height: 200px;
+    background: gold;
+    box-shadow: 0px 0px 30px grey;
+}
+
+h1 {
+
+    color: white;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
