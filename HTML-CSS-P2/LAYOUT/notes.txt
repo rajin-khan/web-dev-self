@@ -1,0 +1,156 @@
+T1: THE BOX MODEL
+
+all elements that are rendered are put in an invisible box. that box has, from the inside:
+
+content, (outside which is the)
+padding, (outside which is the)
+border, (outside which is the)
+margin.
+
+padding is the space between the content and the border, whereas the margin is the area between the border and everything else.
+the padding property works exactly like the border property. it takes 4 values, (top, right, bottom, left).
+for example:
+
+padding: 10px, 20px, 10px, 20px;
+
+shortcut - padding: 10px, 20px;
+why?
+similar to border property, if you drop the last value (left) then thr browser will assign the righ one's value to the left one.
+similary, if bottom value absent, top value used to represent it.
+
+say you have two paragraph elements with a margin of 20px. then the margins on the bottom of the first paragraph and the top of the second one
+will get collapsed (become one). so in total, the space will be 20px.
+
+whereas, if you had padding set to 20px, you would have 40px in between (20 for the bottom of the first p, 20 for the top of the first p).
+the padding does not collapse.
+
+so, you should use the margin property to space out elements.
+and the padding property to seperate the space between the border and the content element.
+
+
+T2: SIZING ELEMENTS 
+
+
+say we use a box again, with the properties:
+
+.box {
+
+    height: 100px;
+    width: 100px;
+    background-color: gold;
+}
+
+we have to realize that by default, the height and the width properties affect the content area ONLY.
+thus we will see a 100x100 box.
+let's add more properties.
+
+.box {
+
+    height: 100px;
+    width: 100px;
+    background-color: gold;
+    padding: 20px;
+    border: 10px solid orange;
+}
+
+we see now a 160x160 box. why? the padding on left and right of 20px, and border of 10px made the width 160. vertical padding and border did the same.
+adding the padding and the border made the visible box get bigger. so, we need to take away that padding makes the visible box bigger
+(padding takes the color of the content).
+border also makes the visible box bigger.
+
+however, margin MOVES the box AWAY from other boxes. it does not impact the size of the visible box.
+
+to get rid of this weird behaviour, we can use the box-sizing property. if we set it to:
+
+box-sizing: border-box;
+
+this will make the entire box, padding, border and all fit within the original height and width (100x100). this means that
+now our content box has been reduced by: (horizontal padding: 20, 20, horizontal border: 10, 10, so content width is now 100-40-20=40)
+                                         (vertical padding: 20, 20, vertical border: 10, 10, so content height is now 100-40-20=40)
+                                        now content is 40x40.
+
+now, keeping the box-sizing property and removing the padding and border would make the content area 100x100 to fit the height and width.
+but we don't wanna apply this property to every single html element one by one. this is where we use:
+
+the universal selector "*" (be careful when using it)
+
+so at the top of the css doc, we can just add:
+
+* {
+
+    box-sizing: border-box;
+}
+
+now this will assign this property to all html elements, EXCEPT FOR THE PSEUDO ELEMENTS ("::"). to fix this, we can just change it like this:
+
+*, *::before, *::after {
+
+    box-sizing: border-box;
+}
+
+so now this will target all elements, and things before and after those elements.
+
+now, keep in mind, the height and width properties are only applied to BLOCK LEVEL ELEMENTS (take up the entire available horizontal space)
+
+let's say in the html file, we replaced the div with a span for two boxes. then it would just become two highlighted words next to each other.
+this is because span is an inline element, and inline elements don't respect the height and width properties.
+but what if we want to give an inline element a width and height?
+this is where we use:
+
+the display property. it makes it so that the height and width we specify are followed by inline and/or block level elements.
+
+so in the .box part, we can insert the display peroperty. it takes three types of values: inline/block/inline-block.
+
+.box {
+
+    height: 100px;
+    width: 100px;
+    background-color: gold;
+    display: inline-block; //this makes it so that both inline elements and block level elements respect the width and height properties.
+}
+
+in the html, if the spans are in diff lines, there will be a space in between the blocks. if they are right next to each other, they will be completely
+attached.
+
+
+T3: OVERFLOWING
+
+
+sometimes, our container may not be able to fit all the content we provide it. in this case, overflowing may happen.
+for example, in a div class box of size 150x150, we put in a p element of 50 words. it might not fit. so, in the box, we add the:
+
+overflow property.
+
+so the overflow property takes a lot of values:
+visible (it shows everything that's overflowing) / hidden (it hides the extra content) / scroll (we can see two scroll bars for hor and ver scroll)
+         / auto (to only show scroll bars when needed.)
+so in the box, it looks like this:
+
+.box {
+
+    border: 3px solid gold;
+    width: 150px;
+    height: 150px;
+    overflow: auto;
+}
+
+now, the overflow property is a shorthand for two overflow properties. namely,
+
+overflow-x, and 
+overflow-y.
+
+if we use just overflow, it will be used for both directions. sometimes we wanna have more control. then we use those.
+this it can also be:
+
+.box {
+
+    border: 3px solid gold;
+    width: 150px;
+    height: 150px;
+    overflow: hidden auto; //it is hiding the horizontal scroll bar, and just showing the vertical one
+}
+
+
+T4: MEASUREMENT UNITS
+
+
