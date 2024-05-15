@@ -555,7 +555,7 @@ also, border-width property assigns values in this order:
 
 border-width: 10px, 20px, 10px, 20px; //TOP, RIGHT, BOTTOM, LEFT (clockwise).
 
-however, if you remove the rule for the left border, the browser automatically applies the border rule of the left border.
+however, if you remove the rule for the left border, the browser automatically applies the border rule of the right border.
 similarly, if you remove the rule for the bottom border, the browser auto-applies the rule for the top border.
 
 so, writing:
