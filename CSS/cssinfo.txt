@@ -539,7 +539,7 @@ T11: BORDERS
 
 so, going back to our box, we can see that the border property takes three values:
 
-border: 10px solid royalblue; //the width(solid, dotted, dashed, etc [others styles exist]), the style, the color(can be rgb, hex, named, anything)
+border: 10px solid royalblue; //the width, the style(solid, dotted, dashed, etc [others styles exist]), the color(can be rgb, hex, named, anything)
 
 however, this border property is a shorthand property. it applies them to all sides. in css, we have full control and can apply them to each side.
 for example, we can separately assign properties to:
