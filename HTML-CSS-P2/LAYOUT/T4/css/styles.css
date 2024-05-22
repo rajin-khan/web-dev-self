@@ -1,0 +1,12 @@
+body {
+
+    margin: 0px;
+}
+
+.box {
+
+    width: 50%;
+    height: 100vh;
+    border-top: 3px solid orange;
+    background-color: gold;
+}
