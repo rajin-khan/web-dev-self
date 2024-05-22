@@ -154,3 +154,76 @@ this it can also be:
 T4: MEASUREMENT UNITS
 
 
+so war, we've only used pixels to size elements.
+
+but, we have abolute, and relative unit 
+
+absolute:
+
+    px 
+
+
+relative:
+
+    % (relative to the size of the parent element/container)
+
+    vw
+        (relative to the size of the viewport)
+    vh
+
+    em 
+        (relative to the font size)
+    rem 
+
+now, if we use px, it will remain the same size regardless of what device or window you're viewing it on. thus, some say it should never be used, because
+it is not scalable. but, it does have its own applications (for example, maybe border values)
+
+say we have a div class called box and we've given it the following properties:
+
+body {
+
+}
+
+.box {
+
+    width: 50%;
+    height: 100px;
+    background-color: gold;
+}
+
+here, using 50% for the width means it is 50% of the size of the parent element. since this div's parent element is the body element, it will depend on
+the size of the body element (as specified above it).
+as the body element is a block level element, it takes up the entire width of the page by default (as no size is specified). 
+thus, setting the width of the box to 50% means that it will take up half the width of the page.
+now, if we resize the window, the size will change accordingly. this is the benefit of using relative measurement units.
+
+now, what if we wanted to make the box take up 100% of the vertical space, it would make sense to use height: 100%. but, it doesn't work. this is because
+the parent element of the box is the body element, and it is a block level element. by default, block level elements have a height of 0 and only take
+up space when there is content in it (like the body element). thus, here, we need to use viewport units (vw/vh).
+
+thus, we can now use this:
+
+.box {
+
+    width: 50vw; (meaning viewport width)
+    height: 100vh; (meaning viewport height)
+    background-color: gold;
+}
+
+additionally, em units mean that it will take nx the size of the font of that element. (if it doesn't have a font size assigned, it goes up to the 
+next root element, if that doesn't have it, it keeps going up, till it reaches the basic HTML font size, which is 16px). since it can get complicated
+to follow these things, we can use rem units.
+so 10rem would mean that the width/height will always be 10x the size of the font of the root html element (always 16px unless stated otherwise).
+15rem would mean 15x the font size. but that calculation can get complicated. so, we can use this method:
+
+html {
+
+    font-size: 62.5% //this makes it so that the root html font size is 10px, so now our rem calculations are always 10x whatever we give it.
+}
+
+after this modification to the css sheet, 15rem means 150px, and so on. the benefit of using these units is that if a user changes the browser view zoom %,
+the width and height of the box adjust accordingly.
+
+
+T5: POSITIONING
+
