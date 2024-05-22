@@ -227,3 +227,164 @@ the width and height of the box adjust accordingly.
 
 T5: POSITIONING
 
+
+tip: each element can have multiple classes separated by a space. like this:
+
+<div class="boxes">
+        <div class="box box-one"></div>
+        <div class="box box-two"></div>
+        <div class="box box-three"></div>
+ </div>
+
+ so, to start off, we have three boxes in a container:
+
+ .boxes {
+
+    border: 3px solid lightgrey;
+}
+
+.box {
+
+    width: 5rem;
+    height: 5rem;
+}
+
+.box-one {
+
+    background-color: gold;
+}
+
+.box-two {
+
+    background-color: tomato;
+}
+
+.box-three {
+
+    background-color: dodgerblue;
+}
+
+so, to start positioning elements here, we can enable the:
+
+position 
+
+property.
+
+the position value of all elements is set to static by default. (which means it stays in its normal position, usually top left)
+we change the property of the position to :
+relative (positioning), 
+which will move it relative to its static(original) position.
+so, say we wanna change the position property of box-two:
+
+.box-two {
+
+    background-color: tomato;
+    position: relative;
+    left: 5rem; //this means we're adding 5rems of space to the left of the box (we have left: right: top: and bottom:)
+    //if we happened to se this value to -5rem, we'd add 5 rems of space to the right side of the box, which would make it appear off screen.
+}
+
+negative values may be useful when we want elements to initially remain off screen and then appear using animations and whatnot.
+here, we're using rem just cause. we can use any unit, like %, vw/vh/px/em it doesn't matter.
+
+one box is not affected by the positioning of other element boxes. we have overlapping if something goes over the position of another.
+now, if one box overlaps another, and you don't like the order of their overlapping, you can change this in the settings of the DOM. we do this by
+using the:
+
+z-index
+
+property. it is exactly how it sounds, almost like x, y, and z axes where the z-index controls the positioning of the "depth" of the webpage, kind
+of like controlling what goes front and what goes back. by default, the z-index property of all elements is 0. if you set it to a positive value,
+like say 1, it moves "closer" to us. if we set it to a negative value, it moves "away" from us.
+
+box two was initially overlapping and coming over box 1. we wanted to change that. so:
+
+.box-two {
+
+    background-color: tomato;
+    position: relative;
+    left: 4rem;
+    bottom: 4rem;
+    z-index: -1;
+}
+
+it doesn't matter if you use 1, 7, 99, 100, or 99999. What matters is that the bigger the number is, the higher up it will move along the z axis,
+or closer to us, so to speak.
+vice versa with negative values.
+
+
+this was all relative positioning. (we can move an element relative to its normal position, not impacting other elements on the page.)
+in contrast, we have:
+absolute (positioning),
+which will move the elements relative to its container.
+to do this, first you MUST set the position property of the CONTAINER to relative. in our case, we'd edit the .boxes style like this:
+
+ .boxes {
+
+    border: 3px solid lightgrey;
+    position: relative;
+}
+
+so now, we can change the box-two position property to absolute:
+
+.box-two {
+
+    background-color: tomato;
+    position: absolute;
+    right: 0; //by the way, when using 0, you don't need to specify any unit
+    bottom: 0;
+    z-index: -1;
+}
+
+notice how when you look at the webpage, the (blue) box-three moved up and remained on the left even though it was supposed to be below the (tomato) box-two.
+this is because when we absolutely position an element, it breaks it from the normal flow of the page. from the parent's point of view, they don't exist.
+the absolutely positioned elements exist on a second layer to them. thus, the parent element only sees two boxes (one/yellow and three/blue).
+the orange box is on a different layer (not the same as changing z property tho). all the other elements are rendered as if the absolutely positioned element
+does not exist.
+
+
+sometimes you might wanna position an element relative to the viewport (e.g, sometimes you might wanna have a navbar at the top no matter what)
+this is when we set the position property to:
+fixed,
+which positions the element relative to the viewport/area of the browser.
+
+like this:
+
+.box-two {
+
+    background-color: tomato;
+    position: fixed;
+    top: 0;
+    z-index: 999999;
+}
+
+so far, we've been using either top, bottom, left, or right separately to configure the positions of boxes. now, we can also use a combination of these.
+for example:
+
+.box-two {
+
+    background-color: tomato;
+    position: fixed;
+    left: 2rem;
+    right: 2rem;
+    width: auto; //this is to let the browser figure out what the width should be so that space that we allocated to the left and right fit accordingly.
+    //otherwise, just the left part will work and not the right, bc our box was originally set to just 5rem, so it wouldn't reach the right side far enough
+    //for the right space to come into effect.
+    z-index: 999999;
+}
+
+also, i figured this out:
+
+.box-two {
+
+    background-color: tomato;
+    position: fixed;
+    top: 0;
+    left: 25vw; //this means 25% of the viewport width's space is given to the left side
+    right: 25vw; //and same for the right side. so, in total, the box is now taking up the remaining 50% of th middle space.
+    //if both left and right were set to 50, the box would just disappear
+    width: auto; //for this combo thing to work, the width MUST be set to auto. (so if we wanted to leave spaces on the top and bottom, we'd HAVE to set the height to auto too)
+    z-index: 999999;
+}
+
+T6: FLOATING ELEMENTS
