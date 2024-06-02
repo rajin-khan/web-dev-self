@@ -156,7 +156,7 @@ T4: MEASUREMENT UNITS
 
 so war, we've only used pixels to size elements.
 
-but, we have abolute, and relative unit 
+but, we have absolute, and relative unit 
 
 absolute:
 
@@ -388,4 +388,12 @@ also, i figured this out:
 }
 
 T6: FLOATING ELEMENTS
+
+not too important, but still used, so talked about. floating elements usually do not appear to the parent class. thus, we have an issue called parent collapsing.
+what happens is, the parent element does not see the floating element, so for example a border that is set around a box and a text might not see the box if it is floating. thus the border does not wrap around it. this is border collapsing. we can fix the issue by creating an empty div at the end to make the box extend to that length. but this is an informal solution and not recommended. it is better to use pseudo elements and add it at the end of the parent element in css, like
+.tweet::after, or .clearfix::after (as it is more commonly called). .clear is a property used to define any other elements in the class to appear after the floating element. we use clear: left; to clear a floating element on the left, and clear:right; to clear a floating element on the right. it is more common to use clear:both; to avoid confusion.
+
+again, floating elements were used in the past, but it is generally quite complicated to do so, with the making of things like flexbox.
+
+T7: FLEXBOX
 
