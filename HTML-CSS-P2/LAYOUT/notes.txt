@@ -397,3 +397,145 @@ again, floating elements were used in the past, but it is generally quite compli
 
 T7: FLEXBOX
 
+allows us to lay out elements in a horizontal/vertical direction without having to use too many complicated properties.
+say we have a div container containing 3 boxes, like this:
+
+<div class="container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+</div>
+
+then, in the css, we'd first have to enable the flex property in the parent element (container):
+
+.container {
+
+    border: 3px solid lightgrey;
+    display: flex; //here
+}
+
+then we'd have to add the arrangement type:
+
+.container {
+
+    border: 3px solid lightgrey;
+    display: flex;
+    flex-direction: column; //here, we can do flex-direction: row, column-reverse, or even row-reverse
+}
+
+now, flex has 2 axes, the main (primary) axis, and the cross (secondary) axis.
+depending on how you set the flex-direction property, (row/column), you can determine what the main/cross axis is.
+
+if the direction is row, the main axis is the horizontal axis. the cross axis is the vertical axis.
+if the direction is column, the main axis is the vertical axis. the cross axis is the horizontal axis.
+
+now, to align items, we need to remember two properties:
+
+- justify-content (to align items along the main axis)
+- align-items (to align items along the cross axis)
+
+these properties can have the values:
+
+    flex-start (default)
+    flex-end
+    center
+    space-evenly
+    space-between
+    space-around
+
+for example:
+
+.container {
+
+    border: 3px solid lightgrey;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} 
+
+now, what about align-content?
+it only works if we have multiple lines in our flex container.
+
+now we have added multiple boxes to the container, like this:
+
+<div class="container">
+    <div class="box">A</div>
+    <div class="box">B</div>
+    <div class="box">C</div>
+    <div class="box">D</div>
+    <div class="box">E</div>
+    <div class="box">F</div>
+    <div class="box">G</div>
+    <div class="box">H</div>
+</div>
+
+to fit them all in one line, by default, flex makes the boxes shrink to fit it all in one line.
+we can change this behaviour using the:
+
+flex-wrap 
+
+property. we can set the flex-wrap to:
+
+    nowrap (default)
+    wrap (makes the items keep their original side, and go to the next line in the container if needed)
+
+now, since we have items on two lines, we can use the align-content property, like this:
+
+.container {
+
+    border: 3px solid lightgrey;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+} 
+
+now, let's go back to three boxes.
+what if we wanted to specifically align box A so that it was at the start of the vertical axis?
+then we'd have to assign it a different class, then under that class, we define a new rule of:
+
+align-self: (flex-start/end, center, all that stuff) like this:
+
+.box-one {
+
+    align-self: flex-start;
+}
+
+and now the rules for that one object specifically can be edited/changed, overwriting the align-items rule.
+
+that was all about positioning items in flex. now, we'll get into sizing items with flex.
+for sizing items, we have a few properties in flex:
+
+flex-basis (determines the initial size of the item)
+has the value:
+    auto (default)
+    but we can also use sizing units like vh, vw, rem to determine the size.
+
+it is VERY IMPORTANT to remember that flex-basis is determined on the flex-direction. 
+if direction is row, flex basis determines the WIDTH.
+if direction is column, flex basis determines the HEIGHT.
+
+of course, we can apply the flex-basis property to individual items as well by creating a different class for them.
+
+
+flex-grow (makes the items grow in size according to available space)
+has the value:
+    0 (default, boxes not growing)
+    but we can also use values like 1, 2, 3 and so on.
+
+how it works is, all the available space is taken up so that each box defines 1 unit of space. so for 3 boxes, it takes up all the space so that 3 boxes can fit.
+say we individually gave box-one a flex-grow value of 2, and the others 1. then out of 4 units, box-one would take up 2/4ths of the total space, with the rest being 1/4th.
+
+flex-shrink (makes the items shrink in size according to available space)
+(opposite of flex-grow)
+
+all these properties should be applied to the ITEMS, not the flex container.
+
+now, a combination of all these properties is the simple "flex" property.
+it works like this:
+
+flex: 1 1 15rem; (if we give 3 values, 1st will be flex-grow, then flex-shrink, then flex-basis at the end. if just 2 values, it's flex-grow, then flex-basis)
