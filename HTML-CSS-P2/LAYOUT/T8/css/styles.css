@@ -1,0 +1,56 @@
+html {
+
+    font-size: 62.5%
+}
+
+body {
+
+    margin: 10px;
+}
+
+.container {
+
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(2, 100px);
+    justify-items: center;
+    align-items: center;
+    border: 3px solid lightgrey;
+    justify-content: center;
+    align-content: center;
+}
+
+.box {
+
+    width: 5rem;
+    height: 5rem;
+    background-color: gold;
+}
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px auto 100px / 30fr 70fr;
+    gap: 10px;
+
+    grid-template-areas: 
+
+        "header    header" 
+        "sidebar   main" 
+        ".         footer";
+
+    border: 3px solid lightgrey;
+}
+
+.box2 {
+    background-color: gold;
+}
+
+.box-a {
+
+    grid-area: header;
+}
+
+.box-b {
+
+    grid-area: footer;
+}
