@@ -395,7 +395,12 @@ what happens is, the parent element does not see the floating element, so for ex
 
 again, floating elements were used in the past, but it is generally quite complicated to do so, with the making of things like flexbox.
 
+
+
 T7: FLEXBOX
+
+
+
 
 allows us to lay out elements in a horizontal/vertical direction without having to use too many complicated properties.
 say we have a div container containing 3 boxes, like this:
@@ -539,3 +544,285 @@ now, a combination of all these properties is the simple "flex" property.
 it works like this:
 
 flex: 1 1 15rem; (if we give 3 values, 1st will be flex-grow, then flex-shrink, then flex-basis at the end. if just 2 values, it's flex-grow, then flex-basis)
+
+
+
+
+T8: GRID
+
+
+
+in flex, we learned that items can be arranged in either rows, or columns. however, there may be cases where items may need to be arranged in both rows and columns. so essentially a grid has two properties, its rows and its columns.
+
+let's start with a container.
+
+<body>
+    <div class="container"></div>
+</body>
+
+like flex, we declare grid as the display type in a container, like this:
+
+.container {
+
+    display: grid;
+    border: 3px solid lightgrey
+}
+
+we must also assign/tell the container how many rows/columns there are, like this:
+
+.container {
+
+    display: grid;
+    border: 3px solid lightgrey
+}
+
+then, we can add the rows/columns like this:
+
+.container {
+
+    display: grid;
+    grid-template-rows: repeat(3, 100px); 
+    grid-template-columns: repeat(2, 100px);
+    border: 3px solid lightgrey
+}
+
+grid-template-rows property adds/specifies the number of rows (via the size). it is normally written like this:
+    grid-template-rows: 100px, 100px, 100px; (with each value/size representing a row, so 3 values means 3 rows)
+
+however, this repetition can get inefficient when creating same sized rows, so we use the repeat function, like this:
+    grid-template-rows: repeat(3, 100px);
+
+grid-template-columns follows the same exact concept.
+
+now, there exists a shorthand for us to be able to use both the rows and columns together instead of using the properties explicitly like this, and it is:
+    grid-template: repeat(3, 100px) / repeat(2, 100px);
+
+here, simply using grid-template means that the first part represents rows, and the seconf part represents columns. they are separated by a "/".
+note that you can also write:
+    grid-template: 100px 100px 100px / 100px 100px;
+and it would yield the same result.
+
+so, grid-template only works with repeat().
+
+let's add some elements to the container:
+
+<body>
+    <div class="container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+    </div>
+</body>
+
+now, you'll see that these boxes/items start filling up from top left to bottom right.
+also, inside each grid section (row/column/cell), items are aligned along the top left if they are smaller than each individual cell.
+they can easily be aligned along each axes as well, using the:
+
+    justify-items (horizontal axis), and
+    align-items (vertical axis)
+
+property. they work exactly like they did in flex, and take values of start, end, center, etc.
+
+so, to align the boxes along the center of each cell in the grid, we can modify the container property to:
+
+.container {
+
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(2, 100px);
+    justify-items: center; //new code
+    align-items: center; //new code
+    border: 3px solid lightgrey;
+}
+
+
+now, to position the grid itself, along with all its contents, we use the:
+
+    justify-content (horizontal axis), and
+    align-content (vertical axis)
+
+properties. they can obviously take the values start, end, center, etc. the grid is always positioned in the top left by default. so, to center the grid itself (with all its content), we can add:
+
+.container {
+
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(2, 100px);
+    justify-items: center;
+    align-items: center;
+    border: 3px solid lightgrey;
+    justify-content: center; //new code
+    align-content: center; //new code
+}
+
+now, since the container is changing to fit the items in it, the height was changed to 100vh to see how it is also centered vertically.
+
+.container {
+
+    height: 100vh; //new code
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(2, 100px);
+    justify-items: center;
+    align-items: center;
+    border: 3px solid lightgrey;
+    justify-content: center;
+    align-content: center;
+}
+
+
+note that by default, justify/align-items properties have the value of "stretch". it means that it will stretch whatever item we put in the grid to fill up the grid. however, in the case of our code, it's not doing that because we already gave the box a pre-defined height and width. however, if we were to remove that, the case would be different.
+
+let's create a new container with new boxes to see these effects.
+
+<div class="container 2">
+    <div class="box2">a</div>
+    <div class="box2">b</div>
+    <div class="box2">c</div>
+    <div class="box2">d</div>
+</div>
+
+in the styles:
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px 100px 100px / 100px 100px;
+    border: 3px solid lightgrey;
+}
+
+.box2 {
+
+    background-color: gold;
+}
+
+note that we did not add the justify/align-items property because it is set by default.
+
+now, for the grid-template property, you can also assign percentages, like this:
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px 100px 100px / 30% 70%; //percentage here meaning one column takes up 30% of the container space, the other 70%
+    border: 3px solid lightgrey;
+}
+
+however, percentages can lead to errors. to avoid that, we use the "fr" (fraction) unit. it means a certain fraction of any AVAILABLE space, not container space as a whole.
+
+so, modified, we have:
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px 100px 100px / 30fr 70fr;
+    border: 3px solid lightgrey;
+}
+
+now, say we want a header of 100px, footer of 100px, but the middle content to be auto so it resizes according to the window. then it would look like:
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px auto 100px / 30fr 70fr; //notice how the middle row value changed to "auto"
+    border: 3px solid lightgrey;
+}
+
+by default, all items are placed right next to each other. we can create a gap between them using the:
+
+    row-gap,
+    column-gap, and
+    gap (combination of both)
+
+properties. it works like this:
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px auto 100px / 30fr 70fr;
+    row-gap: 10px; //new code
+    column-gap: 10px; //new code
+    border: 3px solid lightgrey;
+}
+
+however, an easier way would be to combine the two properties using the "gap" property, whose first value is the row gap, and second is the column gap. it also takes just one value, making both the row and column gap the same value.
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px auto 100px / 30fr 70fr;
+    gap: 10px; //new code
+    border: 3px solid lightgrey;
+}
+
+now, for item placement (determining which item goes where, takes up how many rows/columns) we have grid placement properties. namely:
+
+    grid-row, and
+    grid-column.
+    we also have grid-area, but we'll get into that later.
+
+the first two properties determine which row/column each item should be in, and how much space they should take up.
+now, say you want the box "a" to be in row 2. first, we'd have to add an extra class to separate that box.
+
+<div class="container2">
+    <div class="box2 box-a">a</div> //new class added here
+    <div class="box2">b</div>
+    <div class="box2">c</div>
+    <div class="box2">d</div>
+</div>
+
+then, let's target that box and add:
+
+.box-a {
+
+    grid-row: 2;
+}
+
+now, box-a is in row 2.
+
+for the case of headers/footers, sometimes you want them to take up the span of 2/3/4/however many columns/rows you have. in that case, you can use the properties like this:
+
+.box-a {
+
+    grid-row: 2 / span 2; //meaning it's gonna be at row 2, and span 2 cells (meaning 2 rows)
+}
+
+we can also make it take up 2 columns, simply by writing:
+
+.box-a {
+
+    grid-column: 1 / span 2; //meaning it's gonna be at column 1, and span 2 cells (meaning 2 columns)
+}
+
+now, a combination of these properties can be used with grid-area, but it's too messy. instead, grid area has another special feature we can use.
+to do so, we must first define a grid-template-areas property in the css part of the container.
+
+.container2 {
+    
+    display: grid;
+    grid-template: 100px auto 100px / 30fr 70fr;
+    gap: 10px;
+
+    grid-template-areas: 
+
+        "header    header" 
+        "sidebar   main" 
+        ".         footer"; //we didn't need to space it out and write it like this, this just gives a visual representation to make things easier.
+        
+    border: 3px solid lightgrey;
+}
+
+here, what happened is, we assigned the the first 2 columns in row 1 to the value header.
+the 2 columns in row 2 are sidebar, and main.
+and the 2 columns in row 3 are an empty space (defined by "."), and footer.
+
+now, for say box-a, to make it take up the header space (2 columns in row 1), we can simply write:
+
+.box-a {
+
+    grid-area: header; //DO NOT PUT QUOTES HERE
+}
+
+now, for box-b to take up the footer area, we can simply write:
+
+.box-b {
+
+    grid-area: footer
+}
