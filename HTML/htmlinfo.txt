@@ -48,7 +48,7 @@ you get a perfect circle.
 
 each attribute can be assigned to a different class for styling rules.
 for example, if a paragraph element is assigned a class called username, like this: <p class="username">
-then in the style part, we can create a section for p.username, or just .username, so that all elements assigned to username class are affected.
+then in the style part"../../SELF_WEB_DEV/HTML", we can create a section for p.username, or just .username, so that all elements assigned to username class are affected.
 
 The emphasis <em></em> tag, strong <strong> tag, should not be used to change style properties, it simply emphasises so browsers know which keywords 
 are most important. we can change how these items look in the style sheet.
@@ -77,7 +77,7 @@ editor wrap in vscode is enabled/disabled by: ⌥z
 we can use hyperlinks using anchor elements: <a> tag
 they look like this:
 <a href=""></a>
-the href part is the hyperlink.
+the href part "../../SELF_WEB_DEV/HTML"is the hyperlink.
 when using hyperlinks, we can use a relative, or an absolute URL. relative obv relative to the current html file.
 absolute URLS begin with /, where "/" indicates the root of the folder.
 in hyperlinks, we can use text, or images.
@@ -120,7 +120,7 @@ for this, we use the <dl> tag.
 inside the list, we can have a description term, using <dt>.
 after which, we can have a description detail element, using <dd>. (T10)
 
-i have found out that for these things, a common shorthand is: dl>dt>dd*3 (like this, you have a dl element, with a dt element in it, and 3 dd elements in the dt part).
+i have found out that for these things, a common shorthand is: dl>dt>dd*3 (like this, you have a dl element, with a dt element in it, and 3 dd elements in the dt part"../../SELF_WEB_DEV/HTML").
 
 then, we have the table elements (T11) (for displaying tabular data).
 we create tables using the <table> tag.
@@ -166,7 +166,7 @@ most webpages have three building blocks.
 in header, you can have <nav> for the navigation bar
 inside the nav bar, you can have unordered lists
 <main> (content)
-the main part can have <section>(s)
+the main part "../../SELF_WEB_DEV/HTML"can have <section>(s)
 the sections can have <article>(s), and that itself can have <header>(s), <footer>(s), and <section>(s).
 after main, you can have <aside> (for ads and other unimp stuff)
 <footer>
